@@ -11,7 +11,15 @@ module.exports = {
   },
   mode: "development",
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx"],
+    alias: {
+      '@components': path.resolve(__dirname, './src/components/'),
+      '@containers': path.resolve(__dirname, './src/containers/'),
+      '@context': path.resolve(__dirname, './src/context/'),
+      '@hooks': path.resolve(__dirname, './src/hooks/'),
+      '@pages': path.resolve(__dirname, './src/pages/'),
+      '@routes': path.resolve(__dirname, './src/routes/')
+    }
   },
   module: {
     rules: [
@@ -39,15 +47,16 @@ module.exports = {
           "sass-loader",
         ],
       },
-    //   {
-    //     test: /\.(png|gif|jpg)$/,
-    //     use: [
-    //       {
-    //         loader: "file-loader",
-    //         options: { name: "assets/[name].[ext]" },
-    //       },
-    //     ],
-    //   },
+      {
+        test: /\.(png|svg|gif|jpg)$/,
+        type: 'asset'
+        // use: [
+        //   {
+        //     loader: "file-loader",
+        //     options: { name: "assets/[name].[ext]" },
+        //   },
+        // ],
+      },
     ],
   },
   devServer: {
